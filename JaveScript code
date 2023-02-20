@@ -1,0 +1,56 @@
+function mazeRunner(maze, directions) {
+  let arr = -1;
+  let idx = -1;
+
+  for (let i = 0; i < maze.length; i++) {
+    if (maze[i].includes(2)) {
+      arr = i;
+      idx = maze[i].indexOf(2);
+    } 
+  } 
+  
+  for (let j = 0; j < directions.length; j++) {
+    switch(directions[j]) {
+      case "N":
+        arr--;
+        if (arr < 0) {
+          return "Dead"
+        } else if (maze[arr][idx] == 1) {
+          return "Dead"
+        } else if (maze[arr][idx] == 3) {
+          return "Finish"}
+        break;
+
+      case "E":
+        idx++;
+        if (idx >= maze.length) {
+          return "Dead"
+        } else if (maze[arr][idx] == 1) {
+          return "Dead"
+        } else if (maze[arr][idx] == 3) {
+          return "Finish"} 
+        break;
+        
+      case "S":
+        arr++;
+        if (arr >= maze.length) {
+          return "Dead"
+        } else if (maze[arr][idx] == 1) {
+          return "Dead";
+        } else if (maze[arr][idx] == 3) {
+          return "Finish"
+        } break;
+
+      case "W":
+        idx--;
+        if (idx < 0) {
+          return "Dead"
+        } else if (maze[arr][idx] == 1) {
+          return "Dead";
+        } else if (maze[arr][idx] == 3) {
+          return "Finish";
+        } break;
+      }
+    }
+  return "Lost"
+  }
